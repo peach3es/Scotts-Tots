@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+
 import "./globals.css";
+
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +22,8 @@ export default function RootLayout({
           href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
         />
       </head>
-      <body className={`font-sans text-onyx-500 bg-background antialiased`}>
+      <body className={`bg-background font-sans text-onyx-500 antialiased`}>
+        <Header />
         {children}
       </body>
     </html>
