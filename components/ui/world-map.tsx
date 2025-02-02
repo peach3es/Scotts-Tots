@@ -39,7 +39,7 @@ export default function WorldMap({
     radius: 0.25,
     color: theme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
-    backgroundColor: theme === "dark" ? "black" : "white",
+    backgroundColor: theme === "dark" ? "black" : "eggshell",
   });
 
   const projectPoint = (lat: number, lng: number) => {
@@ -58,10 +58,10 @@ export default function WorldMap({
   };
 
   return (
-    <div className="relative aspect-[2/1] w-full rounded-lg bg-white font-sans dark:bg-black">
+    <div className="bg-eggshell relative aspect-[2/1] w-full rounded-lg font-sans dark:bg-black">
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="pointer-events-none h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
+        className="pointer-events-none z-10 h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
         alt="world map"
         height="400"
         width="800"
