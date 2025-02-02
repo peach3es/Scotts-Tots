@@ -1,3 +1,4 @@
+import { Container } from "@/components/Container";
 import WorldMap from "@/components/ui/world-map";
 import axios from "axios";
 import Image from "next/image";
@@ -91,55 +92,23 @@ export default async function Home() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-items-center px-8">
       <WorldMap dots={dots} />
-      {/* <Container>
-      </Container> */}
-      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <Container>
+        <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
+          <div className="flex items-center gap-6 hover:underline hover:underline-offset-4">
+            <Image
+              aria-hidden
+              src="/F1VIZ_logo.png"
+              alt="F1 Viz logo"
+              width={128}
+              height={128}
+            />
+            F1Viz is an unofficial project and is not associated in any way with
+            the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE
+            WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of
+            Formula One Licensing B.V.
+          </div>
+        </footer>
+      </Container>
     </div>
   );
 }
