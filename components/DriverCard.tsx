@@ -104,6 +104,7 @@ export default function DriverCard({ driver }: DriverCardProps) {
             </div>
           </DialogDescription>
         </DialogHeader>
+        <DialogClose />
       </DialogContent>
     </Dialog>
   );
