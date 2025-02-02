@@ -9,9 +9,23 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ["Satoshi", "sans-serif"],
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        onyx: {
+          300: "#595D69",
+          400: "#363A45",
+          500: "#212329",
+        },
+        brand: {
+          500: "#C70C05",
+        },
+        brandSecondary: {
+          500: "#F92B24",
+        },
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
