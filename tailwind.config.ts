@@ -15,6 +15,7 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        eggshell: "#F8F5F4",
         onyx: {
           300: "#595D69",
           400: "#363A45",
@@ -26,6 +27,8 @@ const config: Config = {
         brandSecondary: {
           500: "#F92B24",
         },
+        darkRed: "#3C0007",
+        burgundy: "#800C1F",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
