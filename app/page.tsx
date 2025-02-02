@@ -93,7 +93,7 @@ export default async function Home() {
     <div className="flex min-h-screen flex-col items-center justify-items-center px-8">
       <WorldMap dots={dots} />
       <Container>
-        <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
+        <footer className="flex flex-wrap items-center justify-center gap-6">
           <div className="flex items-center gap-6 hover:underline hover:underline-offset-4">
             <Image
               aria-hidden

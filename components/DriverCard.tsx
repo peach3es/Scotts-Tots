@@ -27,14 +27,14 @@ export default function DriverCard({ driver }: DriverCardProps) {
   return (
     // TODO onclick open modal for the driver
     <Dialog>
-      <DialogTrigger>
+      <DialogTrigger className="w-full">
         <div
-          className="flex w-full flex-col justify-center rounded-lg align-middle"
+          className="flex w-full flex-col items-start justify-center rounded-lg p-2"
           style={{ backgroundColor: bgCol }}
           onMouseEnter={() => setBgCol(`${teamColor}`)}
           onMouseLeave={() => setBgCol("#F8F5F4")}
         >
-          <div className="flex flex-row items-center gap-2 pb-2 align-middle">
+          <div className="flex flex-row items-center gap-2 pb-2">
             <div
               className="flex max-w-12 flex-col overflow-hidden rounded-lg"
               style={{ backgroundColor: teamColor }}
