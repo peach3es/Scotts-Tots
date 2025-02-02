@@ -15,7 +15,7 @@ export default async function Racers() {
 
   return (
     <div className="min-h-screen items-center">
-      <Container className="pt-32">
+      <Container className="py-32">
         <div className="pb-5 text-4xl font-semibold text-darkRed">
           Get to Know the Athletes
         </div>

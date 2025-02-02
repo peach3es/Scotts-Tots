@@ -11,6 +11,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["Satoshi", "sans-serif"],
+        nums: ["Grotesk", "sans-serif"],
       },
       colors: {
         background: "hsl(var(--background))",
