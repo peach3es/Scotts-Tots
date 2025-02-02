@@ -32,7 +32,7 @@ export default function WorldMap({
   lineColor = "#f98282",
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
-  const map = new DottedMap({ height: 100, grid: "diagonal" });
+  const map = new DottedMap({ height: 110, grid: "diagonal" });
   const { theme } = useTheme();
 
   const svgMap = map.getSVG({
@@ -63,8 +63,8 @@ export default function WorldMap({
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
         className="pointer-events-none h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
         alt="world map"
-        height="495"
-        width="1056"
+        height="400"
+        width="800"
         draggable={false}
       />
       <svg
