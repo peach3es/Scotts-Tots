@@ -14,6 +14,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { Slider } from "./slider";
 
 interface MapProps {
   dots?: Array<{
@@ -145,8 +146,8 @@ export default function WorldMap({
                 <DialogHeader>
                   <DialogTitle>{dot.start.label}</DialogTitle>
                   <DialogDescription>
-                    {/* Replace this with any additional details you want */}
                     More details about {dot.start.label} go here.
+                    <Slider defaultValue={[0]} max={100} step={1} />
                   </DialogDescription>
                 </DialogHeader>
                 <DialogClose />
