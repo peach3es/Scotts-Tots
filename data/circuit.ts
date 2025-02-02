@@ -12,6 +12,7 @@ import {
   japan,
   mexico,
   netherlands,
+  red_bull_ring,
   texas,
 } from "./raceData/raceData";
 import {
@@ -25,6 +26,7 @@ import {
   shanghai,
   silverstone,
   spa,
+  spielberg,
   suzuka,
   villeneuve,
   yas_marina,
@@ -87,5 +89,9 @@ export const circuits: { [key: string]: { track: any[]; top3: any[] } } = {
   americas: {
     track: americas,
     top3: texas,
+  },
+  red_bull_ring: {
+    track: spielberg,
+    top3: red_bull_ring,
   },
 };

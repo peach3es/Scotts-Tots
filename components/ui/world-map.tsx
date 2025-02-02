@@ -76,6 +76,41 @@ export default function WorldMap({
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
           return (
+            <g key={`path-group-${i}`}>
+              <motion.path
+                d={createCurvedPath(startPoint, endPoint)}
+                fill="none"
+                stroke="url(#path-gradient)"
+                strokeWidth="1"
+                initial={{
+                  pathLength: 0,
+                }}
+                animate={{
+                  pathLength: 1,
+                }}
+                transition={{
+                  duration: 1,
+                  delay: 0.5 * i,
+                  ease: "easeOut",
+                }}
+                key={`start-upper-${i}`}
+              ></motion.path>
+            </g>
+          );
+        })}
+
+        <defs>
+          <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+            <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
+            <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+        </defs>
+        {dots.map((dot, i) => {
+          const startPoint = projectPoint(dot.start.lat, dot.start.lng);
+          const endPoint = projectPoint(dot.end.lat, dot.end.lng);
+          return (
             <Dialog key={`dialog-${i}`}>
               <DialogTrigger asChild>
                 <g className="z-20 cursor-pointer" key={`points-group-${i}`}>
@@ -117,7 +152,6 @@ export default function WorldMap({
                 <DialogHeader>
                   <DialogTitle>{dot.start.label}</DialogTitle>
                   <DialogDescription>
-                    {/* Look up the circuit data by dot.start.label and pass it to Track2D */}
                     {dot.start.id && circuits[dot.start.id] ? (
                       <Track2D circuit={circuits[dot.start.id]} />
                     ) : (

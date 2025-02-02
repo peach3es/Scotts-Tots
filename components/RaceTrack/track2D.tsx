@@ -82,7 +82,7 @@ export default function Track2D({ circuit }: Track2DProps) {
     .curve(d3.curveCardinal);
   const pathData = useMemo(
     () => lineGenerator(circuit.track) || "",
-    [circuit.track, xScale, yScale]
+    [circuit.track, lineGenerator]
   );
 
   // Compute cumulative lengths along the track.
@@ -134,8 +134,8 @@ export default function Track2D({ circuit }: Track2DProps) {
 
   return (
     <div className="flex flex-col items-center space-y-4 p-4">
-      <h2 className="text-center text-2xl font-bold">Race Simulation</h2>
-      <div className="flex w-full flex-col items-center -space-y-1">
+      <p className="text-center text-2xl font-bold">Race Simulation</p>
+      <div className="flex w-full flex-col items-center -space-y-2">
         {/* Top-3 Bubble Diagram */}
         <svg width={750} height={120} className="rounded bg-gray-900 shadow">
           {top3Drivers.map((driver, index) => (
