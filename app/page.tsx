@@ -1,7 +1,5 @@
-import { Container } from "@/components/Container";
 import WorldMap from "@/components/ui/world-map";
 import axios from "axios";
-import Image from "next/image";
 
 interface Circuit {
   circuitId: string;
@@ -90,25 +88,8 @@ async function getCircuits(): Promise<Dot[]> {
 export default async function Home() {
   const dots = await getCircuits();
   return (
-    <div className="flex min-h-screen flex-col items-center justify-items-center px-8">
+    <div className="flex min-h-screen flex-col items-center justify-items-center px-8 pb-10 pt-16">
       <WorldMap dots={dots} />
-      <Container>
-        <footer className="row-start-3 flex flex-wrap items-center justify-center gap-6">
-          <div className="flex items-center gap-6 hover:underline hover:underline-offset-4">
-            <Image
-              aria-hidden
-              src="/F1VIZ_logo.png"
-              alt="F1 Viz logo"
-              width={128}
-              height={128}
-            />
-            F1Viz is an unofficial project and is not associated in any way with
-            the Formula 1 companies. F1, FORMULA ONE, FORMULA 1, FIA FORMULA ONE
-            WORLD CHAMPIONSHIP, GRAND PRIX and related marks are trade marks of
-            Formula One Licensing B.V.
-          </div>
-        </footer>
-      </Container>
     </div>
   );
 }
