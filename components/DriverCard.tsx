@@ -36,7 +36,7 @@ export default function DriverCard({ driver }: DriverCardProps) {
             className="object-cover"
           />
         </div>
-        <div className="font-nums ml-2 text-3xl font-bold text-darkRed">
+        <div className="ml-2 font-nums text-3xl font-bold text-darkRed">
           {driver.driver_number}
         </div>
       </div>
