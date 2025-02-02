@@ -1,25 +1,28 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "motion/react";
-import DottedMap from "dotted-map";
-import Image from "next/image";
-import { useTheme } from "next-themes";
+
 import {
   Dialog,
-  DialogContent,
-  DialogTrigger,
   DialogClose,
+  DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
-  DialogDescription,
+  DialogTrigger,
 } from "@/components/ui/dialog";
-import { Slider } from "./slider";
+import DottedMap from "dotted-map";
+import { motion } from "motion/react";
+import { useTheme } from "next-themes";
+import Image from "next/image";
+
+import { circuits } from "../../data/circuit"; // our mapping from circuit names to data
+import Track2D from "../RaceTrack/track2D";
 
 interface MapProps {
   dots?: Array<{
-    start: { lat: number; lng: number; label?: string };
-    end: { lat: number; lng: number; label?: string };
+    start: { lat: number; lng: number; label?: string; id?: string };
+    end: { lat: number; lng: number; label?: string; id?: string };
   }>;
   lineColor?: string;
 }
@@ -30,11 +33,10 @@ export default function WorldMap({
 }: MapProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const map = new DottedMap({ height: 100, grid: "diagonal" });
-
   const { theme } = useTheme();
 
   const svgMap = map.getSVG({
-    radius: 0.22,
+    radius: 0.25,
     color: theme === "dark" ? "#FFFFFF40" : "#00000040",
     shape: "circle",
     backgroundColor: theme === "dark" ? "black" : "white",
@@ -56,10 +58,10 @@ export default function WorldMap({
   };
 
   return (
-    <div className="w-full aspect-[2/1] dark:bg-black bg-white rounded-lg  relative font-sans">
+    <div className="relative aspect-[2/1] w-full rounded-lg bg-white font-sans dark:bg-black">
       <Image
         src={`data:image/svg+xml;utf8,${encodeURIComponent(svgMap)}`}
-        className="h-full w-full [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)] pointer-events-none select-none"
+        className="pointer-events-none h-full w-full select-none [mask-image:linear-gradient(to_bottom,transparent,white_10%,white_90%,transparent)]"
         alt="world map"
         height="495"
         width="1056"
@@ -68,55 +70,25 @@ export default function WorldMap({
       <svg
         ref={svgRef}
         viewBox="0 0 800 400"
-        className="w-full h-full absolute inset-0 select-none "
+        className="absolute inset-0 h-full w-full select-none"
       >
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
           const endPoint = projectPoint(dot.end.lat, dot.end.lng);
           return (
-            <g key={`path-group-${i}`}>
-              <motion.path
-                d={createCurvedPath(startPoint, endPoint)}
-                fill="none"
-                stroke="url(#path-gradient)"
-                strokeWidth="1"
-                initial={{
-                  pathLength: 0,
-                }}
-                animate={{
-                  pathLength: 1,
-                }}
-                transition={{
-                  duration: 1,
-                  delay: 0.5 * i,
-                  ease: "easeOut",
-                }}
-                key={`start-upper-${i}`}
-              ></motion.path>
-            </g>
-          );
-        })}
-
-        <defs>
-          <linearGradient id="path-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="white" stopOpacity="0" />
-            <stop offset="5%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="95%" stopColor={lineColor} stopOpacity="1" />
-            <stop offset="100%" stopColor="white" stopOpacity="0" />
-          </linearGradient>
-        </defs>
-        {dots.map((dot, i) => {
-          const point = projectPoint(dot.start.lat, dot.start.lng);
-          return (
             <Dialog key={`dialog-${i}`}>
-              {/* Wrap the dot with a DialogTrigger to make it clickable */}
               <DialogTrigger asChild>
-                <g className="cursor-pointer z-20" key={`points-group-${i}`}>
+                <g className="z-20 cursor-pointer" key={`points-group-${i}`}>
                   <g key={`start-${i}`}>
-                    <circle cx={point.x} cy={point.y} r="2" fill={lineColor} />
                     <circle
-                      cx={point.x}
-                      cy={point.y}
+                      cx={startPoint.x}
+                      cy={startPoint.y}
+                      r="3"
+                      fill={lineColor}
+                    />
+                    <circle
+                      cx={startPoint.x}
+                      cy={startPoint.y}
                       r="2"
                       fill={lineColor}
                       opacity="0.5"
@@ -141,13 +113,16 @@ export default function WorldMap({
                   </g>
                 </g>
               </DialogTrigger>
-              {/* Modal dialog content */}
               <DialogContent>
                 <DialogHeader>
                   <DialogTitle>{dot.start.label}</DialogTitle>
                   <DialogDescription>
-                    More details about {dot.start.label} go here.
-                    <Slider defaultValue={[0]} max={100} step={1} />
+                    {/* Look up the circuit data by dot.start.label and pass it to Track2D */}
+                    {dot.start.id && circuits[dot.start.id] ? (
+                      <Track2D circuit={circuits[dot.start.id]} />
+                    ) : (
+                      <p>No circuit data found.</p>
+                    )}
                   </DialogDescription>
                 </DialogHeader>
                 <DialogClose />
