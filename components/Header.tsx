@@ -5,7 +5,7 @@ import { buttonVariants } from "./ui/button";
 
 export default function Header() {
   return (
-    <div className="absolute left-0 top-0 z-20 flex min-h-16 w-full flex-row items-center bg-brand-500">
+    <div className="relative left-0 top-0 z-20 flex min-h-16 w-full flex-row items-center bg-brand-500">
       <Container>
         <div className="flex flex-row justify-between">
           <Link className={buttonVariants({ variant: "brand" })} href={"/"}>
