@@ -109,7 +109,7 @@ export default function WorldMap({
         </defs>
         {dots.map((dot, i) => {
           const startPoint = projectPoint(dot.start.lat, dot.start.lng);
-          const endPoint = projectPoint(dot.end.lat, dot.end.lng);
+          // const endPoint = projectPoint(dot.end.lat, dot.end.lng);
           return (
             <Dialog key={`dialog-${i}`}>
               <DialogTrigger asChild>
