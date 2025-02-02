@@ -7,6 +7,7 @@ import { Bar } from "@visx/shape";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Container } from "@/components/Container";
 
 interface Stint {
   driver_number: number;
@@ -108,7 +109,9 @@ export default function Tyre() {
   if (!isClient) return null;
 
   return (
-    <Card className="w-full max-w-4xl mx-auto mt-10 p-4 shadow-lg">
+    <Container>
+
+    <Card className="w-full  mt-10 p-4 shadow-lg">
       <CardContent>
         <h2 className="text-xl font-bold text-center mb-4">F1 Tire Stint Visualization - 2024 Season</h2>
 
@@ -173,5 +176,6 @@ export default function Tyre() {
         </div>
       </CardContent>
     </Card>
+    </Container>
   );
 }
